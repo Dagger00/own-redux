@@ -1,0 +1,25 @@
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+const rootReducer = (state, action) => {
+  switch (action.type) {
+    case CHANGE_LOGO_COLOR:
+      return {
+        ...state,
+        logoColor: getRandomColor(),
+      }
+    case RESET_LOGO_COLOR:
+      return {
+        ...state,
+        logoColor: 'blue',
+      }
+    default:
+      return state;
+  }
+}
